@@ -1,0 +1,10 @@
+#!name=Picsew
+#!desc=Picsew解锁内购（设置-高级功能-恢复购买即可
+#!author=wuhuhuuuu
+#!icon= https://raw.githubusercontent.com/wuhuhuuuu/study/main/wuhuhuuuu.PNG
+
+[Script]
+http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://raw.githubusercontent.com/wuhuhuuuu/study/main/Scripts/Picsew/Picsew.js, requires-body=true, timeout=10, tag=Picsew
+
+[MITM]
+hostname = buy.itunes.apple.com

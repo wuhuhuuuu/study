@@ -1,10 +1,10 @@
 #!name=Nicegram
 #!desc=Nicegram解锁内购，需在设置中点击Nicegram，随后恢复购买方可享用！！😎😎😎
 #!author=wuhuhuuuu
-#!icon=https://raw.githubusercontent.com/wuhuhuuuu/study/main/wuhuhuuuu.png
+#!icon=https://github.com/wuhuhuuuu/study/blob/main/wuhuhuuuu.PNG?raw=true
 
 [Map Local]
-^https?:\/\/restore-access\.indream\.app\/restoreAccess\?id=\w+$ data="https://raw.githubusercontent.com/wuhuhuuuu/study/main/JSON/Nicegram.json"
+^https?:\/\/restore-access\.indream\.app\/restoreAccess\?id=\w+$ data="https://github.com/wuhuhuuuu/study/blob/main/JSON/Nicegram.json?raw=true"
 
 [MITM]
 hostname = %APPEND% restore-access.indream.app

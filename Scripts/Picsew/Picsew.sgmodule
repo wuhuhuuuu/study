@@ -1,10 +1,10 @@
 #!name=Picsew
 #!desc=Picsew解锁内购（设置-高级功能-恢复购买即可
 #!author=wuhuhuuuu
-#!icon=https://raw.githubusercontent.com/wuhuhuuuu/study/main/wuhuhuuuu.PNG
+#!icon=https://github.com/wuhuhuuuu/study/blob/main/wuhuhuuuu.PNG?raw=true
 
 [Map Local]
-^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt data="https://raw.githubusercontent.com/wuhuhuuuu/study/main/JSON/Picsew.json"
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt data="https://github.com/wuhuhuuuu/study/blob/main/JSON/Picsew.json?raw=true"
 
 [MITM]
 hostname = %APPEND% buy.itunes.apple.com

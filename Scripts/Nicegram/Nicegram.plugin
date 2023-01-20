@@ -1,10 +1,10 @@
 #!name=Nicegram
 #!desc=Nicegram解锁内购，需在设置中点击Nicegram，随后恢复购买方可享用！！😎😎😎
 #!author=wuhuhuuuu
-#!icon=https://raw.githubusercontent.com/wuhuhuuuu/study/main/wuhuhuuuu.png
+#!icon=https://github.com/wuhuhuuuu/study/blob/main/wuhuhuuuu.PNG?raw=true
 
 [Script]
-http-response ^https?:\/\/restore-access\.indream\.app\/restoreAccess\?id=\w+$ script-path=https://raw.githubusercontent.com/wuhuhuuuu/study/main/Scripts/Nicegram/Nicegram.js, requires-body=true, timeout=10, tag=Nicegram
+http-response ^https?:\/\/restore-access\.indream\.app\/restoreAccess\?id=\w+$ script-path=https://github.com/wuhuhuuuu/study/blob/main/Scripts/Nicegram/Nicegram.js?raw=true, requires-body=true, timeout=10, tag=Nicegram
 
 [MITM]
 hostname = restore-access.indream.app

@@ -6,6 +6,7 @@
 
 [Map Local]
 ^https://us.l.qq.com/exapp* data="https://github.com/mieqq/mieqq/blob/master/reject-dict.json?raw=true"
+^https://ad.tencentmusic.com/* data="https://github.com/mieqq/mieqq/blob/master/reject-dict.json?raw=true"
 
 [MITM]
-hostname = %APPEND% us.l.qq.com
+hostname = %APPEND% us.l.qq.com, ad.tencentmusic.com

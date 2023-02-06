@@ -6,6 +6,7 @@
 
 [Rewrite]
 ^https://us.l.qq.com/exapp* reject-dict
+^https://ad.tencentmusic.com/* reject-dict
 
 [MITM]
-hostname = us.l.qq.com
+hostname = us.l.qq.com,ad.tencentmusic.com

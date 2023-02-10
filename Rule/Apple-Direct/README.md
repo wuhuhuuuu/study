@@ -2,7 +2,7 @@
 
 ## App store
 
-is1-ssl.mzstatic.com:443
+is1-ssl.mzstatic.com:443   
 is1-ss2.mzstatic.com:443
 is1-ss3.mzstatic.com:443
 is1-ss4.mzstatic.com:443

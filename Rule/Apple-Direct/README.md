@@ -2,12 +2,13 @@
 
 ## App store
 
-is1-ssl.mzstatic.com:443   
+is1-ssl.mzstatic.com:443</br>
 is1-ss2.mzstatic.com:443
 is1-ss3.mzstatic.com:443
 is1-ss4.mzstatic.com:443
 is1-ss5.mzstatic.com:443
 apps.mzstatic.com：443
+
 dispatcher.is.autonavi.com:443
 journey.pcms.apple.com:443
 xp.apple.com:443

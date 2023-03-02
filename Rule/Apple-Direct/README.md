@@ -24,6 +24,7 @@ init.itunes.apple.com:443</br>
 play.itunes.apple.com:443</br>
 search.itunes.apple.com:443</br>
 se-edge.itunes.apple.com:443</br>
+iosapps.itunes.apple.com:443</br>
 
 amp-api-edge.apps.apple.com:443</br>
 amp-api-search-edge.apps.apple.com:443</br>
@@ -31,3 +32,11 @@ amp-api-search-edge.apps.apple.com:443</br>
 profile.gc.apple.com:443</br>
 stats.gc.apple.com:443</br>
 friend.gc.apple.com:443</br>
+
+
+
+## Apple Music
+
+amp-api.music.apple.com:443</br>
+se2.itunes.apple.com:443 //歌词显示</br>
+sandbox.itunes.apple.com:443</br>

@@ -38,5 +38,5 @@ friend.gc.apple.com:443</br>
 ## Apple Music
 
 amp-api.music.apple.com:443</br>
-se2.itunes.apple.com:443 //歌词显示</br>
+se2.itunes.apple.com:443 // 歌词显示</br>
 sandbox.itunes.apple.com:443</br>

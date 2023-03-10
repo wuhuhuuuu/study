@@ -1,0 +1,10 @@
+#!name=NotBoring
+#!desc=NotBoring全系列解锁内购🔓
+#!author=wuhuhuuuu
+#!icon=https://github.com/wuhuhuuuu/study/blob/main/wuhuhuuuu.PNG?raw=true
+
+[Map Local]
+^https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/* data="https://github.com/wuhuhuuuu/study/blob/main/JSON/NotBoring.json?raw=true"
+
+[MITM]
+hostname = %APPEND% api.revenuecat.com

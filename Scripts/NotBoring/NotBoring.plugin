@@ -1,0 +1,10 @@
+#!name=NotBoring
+#!desc=NotBoring全系列解锁内购（
+#!author=wuhuhuuuu
+#!icon=https://github.com/wuhuhuuuu/study/blob/main/wuhuhuuuu.PNG?raw=true
+
+[Script]
+http-response ^https:\/\/api\.revenuecat\.com\/v1\/(receipts|subscribers)\/* script-path=https://github.com/wuhuhuuuu/study/blob/main/Scripts/NotBoring/NotBoring.js?raw=true, requires-body=true, timeout=10, tag=NotBoring
+
+[MITM]
+hostname = api.revenuecat.com

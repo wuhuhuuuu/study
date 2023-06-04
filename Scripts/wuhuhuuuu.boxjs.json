@@ -1,0 +1,21 @@
+{
+  "id": "wuhuhuuuu.app.sub",
+  "name": "wuhuhuuuu",
+  "author": "@wuhuhuuuu",
+  "icon": "https://github.com/wuhuhuuuu/study/raw/main/wuhuhuuuu.PNG",
+  "repo": "https://github.com/wuhuhuuuu/study",
+  "apps": [
+    {
+      "id": "Tencent.Comic",
+      "name": "腾讯动漫",
+      "keys": ["Tencent_Comic"],
+      "author": "@wuhuhuuuu",
+      "script": "https://github.com/wuhuhuuuu/study/raw/main/Scripts/Tencent_Comic/Tencent.Comic.js",
+      "repo": "https://github.com/wuhuhuuuu/study/tree/main/Scripts/Tencent_Comic",
+      "icons": [
+        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/Tencent_Comic/Tencent.Comic.png",
+        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/Tencent_Comic/Tencent.Comic.png"
+      ]
+    }
+  ]
+}

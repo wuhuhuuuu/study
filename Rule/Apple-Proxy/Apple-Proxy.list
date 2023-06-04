@@ -1,0 +1,10 @@
+# NAME：Apple Direct
+# Author： wuhuhuuuu
+
+
+DOMAIN,iosapps.itunes.apple.com
+DOMAIN,testflight.apple.com
+DOMAIN-SUFFIX,icloud.com
+DOMAIN-SUFFIX,icloud-content.com
+DOMAIN-SUFFIX,icloud-sandbox.com
+DOMAIN-SUFFIX,mail.me.com

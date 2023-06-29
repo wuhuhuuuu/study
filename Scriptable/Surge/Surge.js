@@ -8,7 +8,7 @@
 /********************************************************
  * script     : Surge.js
  * version    : 1.0
- * author     : wuhu.
+ * author     : wuhu.（50岁，来自大佬国的一点乐色
  * date       : 2023-06-29
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/Surge
  * Changelog  : v1.0 - 基本完成所有布局，万事俱备 只欠东风（小组件交互
@@ -40,7 +40,7 @@ if (theme === "dark") {
 } else if (theme === "light") {
     widget.backgroundColor = new Color("#FFFFFF")
 } else {
-    Device.isUsingDarkAppearance() ? widget.backgroundColor = new Color("#000000") : widget.backgroundColor = new Color("#FFFFFF")
+    Device.isUsingDarkAppearance() ? widget.backgroundColor = new Color("#333333") : widget.backgroundColor = new Color("#FFFFFF")
 }
 
 
@@ -54,9 +54,9 @@ async function buildOutbound() {
         headerText.textColor = new Color('#FFFFFF');
     }
 
-    const directImage = await loadImage("touchid")
-    const proxyImage = await loadImage("lock.icloud.fill")
-    const ruleImage = await loadImage("bonjour")
+    const directImage = await loadImage("arrow.left.and.right")
+    const proxyImage = await loadImage("return.right")
+    const ruleImage = await loadImage("arrow.triangle.branch")
     
     addOutbound(widget, directImage, '直接连接', "https://www.google.com");
     addOutbound(widget, proxyImage, '全局代理') ;
@@ -94,10 +94,10 @@ async function buildModify() {
 //         headerText.textColor = new Color('#FFFFFF');
 //     }
     
-    const capture = await loadImage("bonjour")
-    const mitm = await loadImage("touchid")
-    const rewrite = await loadImage("touchid")
-    const script = await loadImage("bonjour")
+    const capture = await loadImage("record.circle")
+    const mitm = await loadImage("lock.slash.fill")
+    const rewrite = await loadImage("pencil")
+    const script = await loadImage("terminal.fill")
     
     addModify(widget, capture, mitm)
     addModify(widget, rewrite, script)
@@ -127,9 +127,9 @@ async function combination() {
     const leftStack = rowStack.addStack()
     leftStack.layoutVertically()
     leftStack.setPadding(33, 8, 5, 40)
-    const directImage = await loadImage("touchid")
-    const proxyImage = await loadImage("lock.icloud.fill")
-    const ruleImage = await loadImage("bonjour")
+    const directImage = await loadImage("arrow.left.and.right")
+    const proxyImage = await loadImage("return.right")
+    const ruleImage = await loadImage("arrow.triangle.branch")
     addOutbound(leftStack, directImage, '直接连接', "https://www.google.com");
     addOutbound(leftStack, proxyImage, '全局代理') ;
     addOutbound(leftStack, ruleImage, "规则模式")
@@ -137,10 +137,10 @@ async function combination() {
     const rightStack = rowStack.addStack()
     rightStack.layoutVertically()
     rightStack.setPadding(15, 5, 10, 20)
-    const capture = await loadImage("bonjour")
-    const mitm = await loadImage("touchid")
-    const rewrite = await loadImage("touchid")
-    const script = await loadImage("bonjour")
+    const capture = await loadImage("record.circle")
+    const mitm = await loadImage("lock.slash.fill")
+    const rewrite = await loadImage("pencil")
+    const script = await loadImage("terminal.fill")
     addModify(rightStack, capture, mitm)
     addModify(rightStack, rewrite, script) 
 }

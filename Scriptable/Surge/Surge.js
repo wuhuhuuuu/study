@@ -18,12 +18,13 @@
 4. 由于小尺寸的小组件包含两种，可在桌面长按小组件输入参数来替换，默认情况则选择"出站模式"
    "出站模式"：输入 0 或者 outbound
    "功能开关"：输入 1 或者 modify
-                v1.1(6.30) - 优化背景及字体颜色
+                v1.1(6.30) - 优化背景及字体颜色，功能修改小组件添加字体，更新脚本功能添加通知
 ----------------------------------------------- */
 
 
 
 // 基础设置
+let localVersion = "1.1"
 const host = Keychain.contains("Host") ? Keychain.get("Host") : "localhost"
 const port = Keychain.contains("Port") ? Keychain.get("Port") : "6171"
 const password = Keychain.contains("Password") ? Keychain.get("Password") : ""
@@ -96,26 +97,41 @@ async function buildModify() {
     const rewrite = await loadImage("pencil")
     const script = await loadImage("terminal.fill")
     
-    addModify(widget, capture, mitm, "FF6A00", "FEB43F")
-    addModify(widget, rewrite, script, "76BB40", "4F85F6")
+    addModify(widget, capture, mitm, "FF6A00", "FEB43F", "Capture", "Mitm")
+    addModify(widget, rewrite, script, "76BB40", "4F85F6", "Rewrite", "Script")
 }
-function addModify(stack, left, right, lcol, rcol) {
+function addModify(stack, left, right, lcol, rcol, ltext, rtext) {
     const rowStack = stack.addStack()
     rowStack.layoutHorizontally()
     
     const leftStack = rowStack.addStack()
-    leftStack.setPadding(5, 3, 5, 10)
+    leftStack.setPadding(5, 5, 5, 10)
+    leftStack.layoutVertically()
     const rightStack = rowStack.addStack()
-    rightStack.setPadding(5, 10, 5, 0)
+    rightStack.setPadding(5, 10, 5, 10)
+    rightStack.layoutVertically()
     
-    const leftImage = leftStack.addImage(left)
+    const limgStack = leftStack.addStack()
+    limgStack.setPadding(0, 9, 0, 15)
+    const ltextStack = leftStack.addStack()
+    const rimgStack = rightStack.addStack()
+    const rtextStack = rightStack.addStack()
+     
+    const leftImage = limgStack.addImage(left)
     leftImage.tintColor = new Color(lcol)
-    leftImage.imageSize = new Size(47, 47)
+    leftImage.imageSize = new Size(40, 40)
     leftImage.centerAlignImage()
-    const rightImage = rightStack.addImage(right)
+    const rightImage = rimgStack.addImage(right)
     rightImage.tintColor = new Color(rcol)
-    rightImage.imageSize = new Size(47, 47)
+    rightImage.imageSize = new Size(40, 40)
     rightImage.centerAlignImage()
+    
+    const leftText = ltextStack.addText(ltext)
+    leftText.font = Font.mediumSystemFont(15)
+    leftText.textColor = new Color("#CDCDCD")
+    const rightText = rtextStack.addText(rtext)
+    rightText.font = Font.mediumSystemFont(15)
+    rightText.textColor = new Color("#CDCDCD")
 }
 
 
@@ -125,7 +141,7 @@ async function combination() {
     
     const leftStack = rowStack.addStack()
     leftStack.layoutVertically()
-    leftStack.setPadding(20, 5, 5, 30)
+    leftStack.setPadding(35, 5, 5, 20)
     const directImage = await loadImage("arrow.left.and.right")
     const proxyImage = await loadImage("return.right")
     const ruleImage = await loadImage("arrow.triangle.branch")
@@ -135,13 +151,13 @@ async function combination() {
     
     const rightStack = rowStack.addStack()
     rightStack.layoutVertically()
-    rightStack.setPadding(20, 5, 10, 20)
+    rightStack.setPadding(20, 5, 10, 10)
     const capture = await loadImage("record.circle")
     const mitm = await loadImage("lock.slash.fill")
     const rewrite = await loadImage("pencil")
     const script = await loadImage("terminal.fill")
-    addModify(rightStack, capture, mitm, "FF6A00", "FEB43F")
-    addModify(rightStack, rewrite, script, "76BB40", "4F85F6")
+    addModify(rightStack, capture, mitm, "FF6A00", "FEB43F", "Capture", "Mitm")
+    addModify(rightStack, rewrite, script, "76BB40", "4F85F6", "Rewrite", "Script")
 }
 
 
@@ -252,9 +268,26 @@ async function update() {
     const url = "https://github.com/wuhuhuuuu/study/raw/main/Scriptable/Surge/Surge.js"
     let req = new Request(url)
     req.method = "GET"
-    let resp = await req.loadString()
+    const resp = await req.loadString()
     
-    fm.writeString(`${dict}/${scriptName}.js`, resp)
+    const regex = /let version = "([\d.]+)"/
+    const match = resp.match(regex);
+    const version = (match ? match[1] : "")
+    
+    if (version != localVersion) {
+        fm.writeString(`${dict}/${scriptName}.js`, resp)
+        let notification = new Notification()
+        notification.title = "脚本更新成功啦🎉🎉"
+        notification.subtitle = "点击该通知即可跳转！！！"
+        notification.sound = "default"
+        notification.addAction("打开脚本🎉🎉", `scriptable:///open/${scriptName}`, false)
+        await notification.schedule()
+    } else {
+        let notification = new Notification()
+        notification.title = "脚本已是最新版，无需更新！🎉🎉"
+        notification.sound = "default"
+        await notification.schedule()
+    }
 }
 
 

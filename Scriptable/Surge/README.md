@@ -6,7 +6,7 @@
  * date       : 2023-06-29
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/Surge
  * Changelog  : 
-### v1.0 - 基本完成所有布局，万事俱备 只欠东风（小组件交互）2023-06-29
+### v1.0(6.29) - 基本完成所有布局，万事俱备 只欠东风（小组件交互）
 1. 小组件交互必须配置 **httpApi**，**Surge—-更多设置—-httpapi**
 2. Scriptable 中运行该脚本，即可调起 UI 来设置 **httpApi 的信息、预览、选择暗黑模式，及脚本一键更新功能**
 3. 小组件总共有两种尺寸，小尺寸则包含 **出站模式** 及 **功能开关**，中尺寸聚合了上面两种尺寸

@@ -9,15 +9,16 @@
  * script     : Surge.js
  * version    : 1.0
  * author     : wuhu.（50岁，来自大佬国的一点乐色
- * date       : 2023-06-29
+ * date       : 2023-06-30
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/Surge
- * Changelog  : v1.0 - 基本完成所有布局，万事俱备 只欠东风（小组件交互
+ * Changelog  : v1.0(6.29) - 基本完成所有布局，万事俱备 只欠东风（小组件交互
 1. 小组件交互必须配置httpApi，Surge中 更多设置---httpapi
 2. Scriptable 中运行该脚本，即可调起 UI 来设置 httpApi 的信息、预览、选择暗黑模式，及脚本一键更新功能
 3. 小组件总共有两种尺寸，小尺寸则包含"出站模式"及"功能开关"，中尺寸聚合了上面两种尺寸
 4. 由于小尺寸的小组件包含两种，可在桌面长按小组件输入参数来替换，默认情况则选择"出站模式"
    "出站模式"：输入 0 或者 outbound
    "功能开关"：输入 1 或者 modify
+                v1.1(6.30) - 优化背景及字体颜色
 ----------------------------------------------- */
 
 
@@ -34,52 +35,48 @@ const param = args.widgetParameter ? args.widgetParameter : ""
 let widget = new ListWidget()
 const padding = 0
 widget.setPadding(padding, padding, padding, padding)
-// widget.url = 'https://github.com/wuhuhuuuu/study/tree/main/Scriptable/Surge'
-if (theme === "dark") {
-    widget.backgroundColor = new Color('#000000')
-} else if (theme === "light") {
-    widget.backgroundColor = new Color("#FFFFFF")
-} else {
-    Device.isUsingDarkAppearance() ? widget.backgroundColor = new Color("#333333") : widget.backgroundColor = new Color("#FFFFFF")
-}
+widget.url = 'https://github.com/wuhuhuuuu/study/tree/main/Scriptable/Surge'
+widget.backgroundColor = setColor("#000000", "#FFFFFF")
 
 
 // 出站模式 Widget
 async function buildOutbound() {
     const headerStack = widget.addStack();
-    headerStack.setPadding(3, 0, 10, 0);
+    headerStack.setPadding(10, 7, 10, 0);
     const headerText = headerStack.addText("Outbound Mode");
     headerText.font = Font.mediumSystemFont(18);
-    if (theme === "dark" || Device.isUsingDarkAppearance()) {
-        headerText.textColor = new Color('#FFFFFF');
-    }
+    headerText.textColor = setColor("#FFFFFF", "#000000")
+
 
     const directImage = await loadImage("arrow.left.and.right")
     const proxyImage = await loadImage("return.right")
     const ruleImage = await loadImage("arrow.triangle.branch")
     
-    addOutbound(widget, directImage, '直接连接', "https://www.google.com");
-    addOutbound(widget, proxyImage, '全局代理') ;
-    addOutbound(widget, ruleImage, "规则模式")
+    addOutbound(widget, directImage, '直接连接', "#3A87FE");
+    addOutbound(widget, proxyImage, '全局代理', "#3A87FE") ;
+    addOutbound(widget, ruleImage, "规则模式", "#3A87FE")
 }
-function addOutbound(stack, image, symbol, url) {
-    const rowStack = stack.addStack();
-    rowStack.setPadding(0, 18, 5, 0);
-    rowStack.layoutHorizontally();
-    rowStack.url = url
+function addOutbound(stack, image, symbol, hex) {
+    const rowStack = stack.addStack()
+    rowStack.cornerRadius = 15
+    rowStack.backgroundColor = setColor("#333333", "#EBEBEB")
+    rowStack.setPadding(1, 20, 0, 20)
+    rowStack.layoutHorizontally()
     
-    const imageStack = rowStack.addStack(); 
-    const symbolStack = rowStack.addStack(); 
+    const imageStack = rowStack.addStack()
+    const symbolStack = rowStack.addStack()
     
-    imageStack.setPadding(0, 0, 7, 10);
-    symbolStack.setPadding(0, 0, 0, 8);
+    imageStack.setPadding(5, 0, 5, 10)
+    symbolStack.setPadding(5, 0, 5, 8)
     
-    const imageNode = imageStack.addImage(image);
-    imageNode.imageSize = new Size(25, 25);
-    imageNode.leftAlignImage();
+    const imageNode = imageStack.addImage(image)
+    imageNode.tintColor = new Color(hex)
+    imageNode.imageSize = new Size(25, 25)
+    imageNode.leftAlignImage()
     
-    const symbolText = symbolStack.addText(symbol);
-    symbolText.font = Font.mediumSystemFont(16);
+    const symbolText = symbolStack.addText(symbol)
+    symbolText.textColor = setColor("#FFFFFF", "#000000")
+    symbolText.font = Font.mediumSystemFont(16)
 }
 
 
@@ -99,10 +96,10 @@ async function buildModify() {
     const rewrite = await loadImage("pencil")
     const script = await loadImage("terminal.fill")
     
-    addModify(widget, capture, mitm)
-    addModify(widget, rewrite, script)
+    addModify(widget, capture, mitm, "FF6A00", "FEB43F")
+    addModify(widget, rewrite, script, "76BB40", "4F85F6")
 }
-function addModify(stack, left, right) {
+function addModify(stack, left, right, lcol, rcol) {
     const rowStack = stack.addStack()
     rowStack.layoutHorizontally()
     
@@ -112,10 +109,12 @@ function addModify(stack, left, right) {
     rightStack.setPadding(5, 10, 5, 0)
     
     const leftImage = leftStack.addImage(left)
-    leftImage.imageSize = new Size(55, 55)
+    leftImage.tintColor = new Color(lcol)
+    leftImage.imageSize = new Size(47, 47)
     leftImage.centerAlignImage()
     const rightImage = rightStack.addImage(right)
-    rightImage.imageSize = new Size(55, 55)
+    rightImage.tintColor = new Color(rcol)
+    rightImage.imageSize = new Size(47, 47)
     rightImage.centerAlignImage()
 }
 
@@ -126,29 +125,29 @@ async function combination() {
     
     const leftStack = rowStack.addStack()
     leftStack.layoutVertically()
-    leftStack.setPadding(33, 8, 5, 40)
+    leftStack.setPadding(20, 5, 5, 30)
     const directImage = await loadImage("arrow.left.and.right")
     const proxyImage = await loadImage("return.right")
     const ruleImage = await loadImage("arrow.triangle.branch")
-    addOutbound(leftStack, directImage, '直接连接', "https://www.google.com");
-    addOutbound(leftStack, proxyImage, '全局代理') ;
-    addOutbound(leftStack, ruleImage, "规则模式")
+    addOutbound(leftStack, directImage, '直接连接', "#3A87FE");
+    addOutbound(leftStack, proxyImage, '全局代理', "#3A87FE") ;
+    addOutbound(leftStack, ruleImage, "规则模式", "#3A87FE")
     
     const rightStack = rowStack.addStack()
     rightStack.layoutVertically()
-    rightStack.setPadding(15, 5, 10, 20)
+    rightStack.setPadding(20, 5, 10, 20)
     const capture = await loadImage("record.circle")
     const mitm = await loadImage("lock.slash.fill")
     const rewrite = await loadImage("pencil")
     const script = await loadImage("terminal.fill")
-    addModify(rightStack, capture, mitm)
-    addModify(rightStack, rewrite, script) 
+    addModify(rightStack, capture, mitm, "FF6A00", "FEB43F")
+    addModify(rightStack, rewrite, script, "76BB40", "4F85F6")
 }
 
 
 // 小组件预览及设置
 async function previewandset() {
-    let options = ["httpApi", "Theme", "Outbound", "Modify", "Combination"]
+    let options = ["httpApi", "Theme", "Outbound", "Modify", "Combination", "Update Script"]
     
     let idx = await generateAlert("Surge Widget", "Designed by wuhu.", options)
     switch(idx) {
@@ -187,6 +186,23 @@ async function previewandset() {
             await combination()
             await widget.presentMedium()
             break
+        case 5:
+            await update()
+            break
+    }
+}
+
+
+function setColor(darkColor, lightColor) {
+    switch (theme) {
+    case "dark":
+        return new Color(darkColor)
+        break
+    case "light":
+        return new Color(lightColor)
+        break
+    case "auto":
+        return (Device.isUsingDarkAppearance() ? new Color(darkColor) : new Color(lightColor))
     }
 }
 

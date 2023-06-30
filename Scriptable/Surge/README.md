@@ -1,7 +1,7 @@
 # Introduce
 
  * script     : Surge.js
- * version    : 1.0
+ * version    : 1.1
  * author     : wuhu.（50岁，来自大佬国的一点乐色
  * date       : 2023-06-29
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/Surge

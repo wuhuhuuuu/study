@@ -270,7 +270,7 @@ async function update() {
     req.method = "GET"
     const resp = await req.loadString()
     
-    const regex = /let version = "([\d.]+)"/
+    const regex = /let localVersion = "([\d.]+)"/
     const match = resp.match(regex);
     const version = (match ? match[1] : "")
     

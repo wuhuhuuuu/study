@@ -280,6 +280,8 @@ async function update() {
         notification.title = "脚本更新成功啦🎉🎉"
         notification.subtitle = "点击该通知即可跳转！！！"
         notification.sound = "default"
+        notification.
+ openURL = `scriptable:///open/${scriptName}`
         notification.addAction("打开脚本🎉🎉", `scriptable:///open/${scriptName}`, false)
         await notification.schedule()
     } else {

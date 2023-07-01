@@ -16,6 +16,18 @@
         "https://github.com/wuhuhuuuu/study/raw/main/Scripts/Tencent_Comic/Tencent.Comic.png",
         "https://github.com/wuhuhuuuu/study/raw/main/Scripts/Tencent_Comic/Tencent.Comic.png"
       ]
+    },
+    {
+      "id": "10099",
+      "name": "中国广电",
+      "keys": ["10099"],
+      "author": "@wuhuhuuuu",
+      "script": "https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.js",
+      "repo": "https://github.com/wuhuhuuuu/study/tree/main/Scripts/10099",
+      "icons": [
+        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png",
+        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png"
+      ]
     }
   ]
 }

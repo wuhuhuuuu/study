@@ -274,7 +274,7 @@ async function update() {
     const match = resp.match(regex);
     const version = (match ? match[1] : "")
     
-    if (version != localVersion) {
+    if (version > localVersion) {
         fm.writeString(`${dict}/${scriptName}.js`, resp)
         let notification = new Notification()
         notification.title = "脚本更新成功啦🎉🎉"

@@ -53,7 +53,7 @@ https://(app|wx).10099.com.cn/contact-web/api/busi/qryUserInfo url script-reques
 
 > 第 1 条脚本是用来获取 cookie 的, 用浏览器访问一次获取 cookie 成功后就可以删掉或注释掉了, 但请确保在`登录成功`后再获取 cookie.
 
-> 第 2 条脚本是签到脚本, 每天`00:03:00`执行一次.
+> 第 2 条脚本是通知信息脚本, 每天`00:03:00`执行一次.
 
 ## 感谢
 

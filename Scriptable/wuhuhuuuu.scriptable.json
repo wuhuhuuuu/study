@@ -1,0 +1,16 @@
+{
+    "author": "95度茅台",
+    "scriptable": true,
+    "icon": "https://gitcode.net/4qiao/framework/raw/master/img/icon/4qiao.png",
+    "repo": "https://gitcode.net/4qiao/scriptable",
+    "apps": [
+        {
+            "scriptURL": "https://github.com/wuhuhuuuu/study/raw/main/Scriptable/10099/10099.js",
+            "title": "中国广电",
+            "thumb": "https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png",
+            "name": "中国广电",
+            "description": "中国广电套餐信息展示",
+            "version": "1.1"
+        }
+    ]
+}

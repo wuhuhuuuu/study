@@ -3,39 +3,80 @@
 // icon-color: deep-green; icon-glyph: phone-square;
 /********************************************************
  * script     : 10099.js
- * version    : 1.0
+ * version    : 1.1
  * author     : wuhu.（50岁，来自大佬国的一点乐色
- * date       : 2023-07-02
+ * date       : 2023-07-03
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/10099
  * Changelog  : v1.0(7.2) - 基本完成所有布局，配合boxjs食用
+v1.1(7.3) - 文字排版调整，抄了亿点点代码😂
 ----------------------------------------------- */
 
 
 
-let localVersion = "1.0"
+let localVersion = "1.1"
 
 let widget = new ListWidget()
-const widgetStack = widget.addStack()
-widgetStack.layoutVertically()
-const logoStack = widgetStack.addStack()
-logoStack.setPadding(0, 10, 0, 0)
-const rowStack = widgetStack.addStack()
-rowStack.setPadding(15, 0, 0, 0)
-rowStack.layoutVertically()
+widget.setPadding(10, 10, 10, 10)
+widget.backgroundColor = (Device.isUsingDarkAppearance() ? Color.black() : Color.white())
+
+// const rowStack = widgetStack.addStack()
+// rowStack.setPadding(15, 0, 0, 0)
+// rowStack.layoutVertically()
+
+fee = {
+  title: '剩余话费',
+  number: 0
+}
+
+flow = {
+  title: '剩余流量',
+  number: 0,
+  unit: 'GB',
+  icon: 'antenna.radiowaves.left.and.right',
+  iconColor: new Color('1ab6f8')
+}
+
+voice = {
+  title: '剩余语音',
+  number: 0,
+  unit: '分钟',
+  en: 'MIN',
+  icon: 'phone.fill',
+  iconColor: new Color('30d15b')
+}
+
+updateTime = {
+  title: '更新时间',
+  number: 0,
+  icon: 'arrow.triangle.2.circlepath',
+  unit: ''
+}
 
 
 async function createWidget() {
-  const logo = await logoImg()
-  const logoNode = logoStack.addImage(logo)
+  const logoStack = widget.addStack()
+  logoStack.addSpacer()
+  const logo = logoStack.addImage(await logoImg())
+  logo.imageSize = new Size(105.6, 34.8)
+  logoStack.addSpacer()
+  widget.addSpacer()
   
-  const info = await userInfo()
-  if (JSON.stringify(info) !== "{}") {
-    setStack("yensign.circle.fill", "话费", info.fee)
-    setStack("antenna.radiowaves.left.and.right.circle.fill", "流量", info.flow)
-    setStack("phone.circle.fill", "语音", info.voice)
-  } else {
-    rowStack.addText("获取不到数据！！")
-  }
+  const feeStack = widget.addStack()
+  feeStack.centerAlignContent()
+  feeStack.addSpacer()
+  const feeValue = feeStack.addText("¥"+`${fee.number}`)
+  feeValue.font = Font.mediumRoundedSystemFont(21);
+  feeStack.addSpacer();
+  widget.addSpacer();
+  
+  const bodyStack = widget.addStack()
+  bodyStack.layoutVertically()
+  
+  setStack(bodyStack, flow)
+  bodyStack.addSpacer()
+  setStack(bodyStack, voice)
+  bodyStack.addSpacer()
+  setStack(bodyStack, updateTime)
 }
 
 
@@ -46,26 +87,21 @@ async function logoImg() {
 }
 
 
-function setStack(symbolName, text, res) {
-  const stack = rowStack.addStack()
-  stack.centerAlignContent()
-  stack.setPadding(5, 0, 5, 0)
+function setStack(stack, data) {
+  const rowStack = stack.addStack()
+  rowStack.centerAlignContent()
   
-  const iconStack = stack.addStack()
-  iconStack.setPadding(0, 0, 0, 2)
-  const textStack = stack.addStack()
-  textStack.setPadding(0, 0, 0, 5)
-  const resultStack = stack.addStack()
-  
-  const img = SFSymbol.named(symbolName)
-  const icon = iconStack.addImage(img.image)
-  icon.imageSize = new Size(17, 17)
-  
-  const key = textStack.addText(text)
-  key.font = Font.semiboldMonospacedSystemFont(14)
-  
-  const result = resultStack.addText(res)
-  result.font = Font.systemFont(14)
+  const img = SFSymbol.named(data.icon)
+  img.applyHeavyWeight()
+  let icon = rowStack.addImage(img.image)
+  icon.imageSize = new Size(13, 13)
+  icon.tintColor = data.iconColor
+  rowStack.addSpacer(4)
+  let title = rowStack.addText(data.title)
+  rowStack.addSpacer()
+  let number = rowStack.addText(data.number + data.unit)
+  title.font = Font.systemFont(13)
+  number.font = Font.systemFont(13)
 }
 
 
@@ -83,16 +119,18 @@ async function userInfo() {
     await BoxjsData()
   }
   
-  const result = {}
   const resp = await req.loadJSON()
   if (resp.status === "000000") {
-    result.fee = resp.data.userData.fee/100 + "元"
-    result.flow = (resp.data.userData.flow/1048576).toFixed(2) + "GB"
-    result.voice = resp.data.userData.voice + "分钟"
+    fee.number = resp.data.userData.fee/100
+    flow.number = (resp.data.userData.flow/1048576).toFixed(2)
+    voice.number = resp.data.userData.voice
+    const date = new Date(parseInt(resp.timestamp))
+    const time = date.toTimeString()
+    const match = time.match(/(\d{2}:\d{2})/)
+    updateTime.number = match[0]
   } else {
     await setNotification("无有效Cookie", "请重新获取！！", null)
   }
-  return result
 }
 
 
@@ -132,17 +170,18 @@ async function previewandset() {
     let idx = await generateAlert("10099 Widget", "Designed by wuhu.", options)
     switch(idx) {
         case 0:
+          await userInfo()
           await createWidget()
           Script.setWidget(widget)
           Script.complete()
           widget.presentSmall()
-            break
+          break
         case 1:
           Safari.openInApp("http://boxjs.com/#/sub/add/https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json", false)
-            break
+          break
         case 2:
           await update()
-            break
+          break
     }
 }
 
@@ -198,6 +237,7 @@ async function update() {
 if (config.runsInApp) {
   await previewandset()
 } else {
+  await userInfo()
   await createWidget()
   Script.setWidget(widget)
   Script.complete()

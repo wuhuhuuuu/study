@@ -1,20 +1,24 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: deep-green; icon-glyph: phone-square;
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: deep-green; icon-glyph: phone-square;
 /********************************************************
  * script     : 10099.js
- * version    : 1.1
+ * version    : 1.2
  * author     : wuhu.（50岁，来自大佬国的一点乐色
- * date       : 2023-07-03
+ * date       : 2023-07-05
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/10099
  * Changelog  :
 v1.0(7.2) - 基本完成所有布局，配合boxjs食用
 v1.1(7.3) - 文字排版调整，抄了亿点点代码😂
+v1.2(7.5) - 直接做掉cookie失效的通知，防止无效通知刷屏😂，当小组件数据都为0即获取不到信息
 ----------------------------------------------- */
 
 
 
-let localVersion = "1.1"
+let localVersion = "1.2"
 
 let widget = new ListWidget()
 widget.setPadding(10, 10, 10, 10)
@@ -130,8 +134,6 @@ async function userInfo() {
     const time = date.toTimeString()
     const match = time.match(/(\d{2}:\d{2})/)
     updateTime.number = match[0]
-  } else {
-    await setNotification("无有效Cookie", "请重新获取！！", null)
   }
 }
 

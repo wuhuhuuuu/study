@@ -4,6 +4,9 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: deep-green; icon-glyph: phone-square;
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: deep-green; icon-glyph: phone-square;
 /********************************************************
  * script     : 10099.js
  * version    : 1.2
@@ -22,11 +25,8 @@ let localVersion = "1.2"
 
 let widget = new ListWidget()
 widget.setPadding(10, 10, 10, 10)
-widget.backgroundColor = (Device.isUsingDarkAppearance() ? Color.black() : Color.white())
+widget.backgroundColor = Color.dynamic(Color.white(), Color.black())
 
-// const rowStack = widgetStack.addStack()
-// rowStack.setPadding(15, 0, 0, 0)
-// rowStack.layoutVertically()
 
 fee = {
   title: '剩余话费',

@@ -3,19 +3,20 @@
 // icon-color: deep-green; icon-glyph: phone-square;
 /********************************************************
  * script     : 10099.js
- * version    : 1.2
+ * version    : 1.3
  * author     : wuhu.（50岁，来自大佬国的一点乐色
- * date       : 2023-07-05
+ * date       : 2023-07-07
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/10099
  * Changelog  :
 v1.0(7.2) - 基本完成所有布局，配合boxjs食用
 v1.1(7.3) - 文字排版调整，抄了亿点点代码😂
 v1.2(7.5) - 直接做掉cookie失效的通知，防止无效通知刷屏😂，当小组件数据都为0即获取不到信息
+v1.3(7.7) - 更改代码逻辑，捕捉错误，使得获取不到数据能显示小组件，不至于ssl错误
 ----------------------------------------------- */
 
 
 
-let localVersion = "1.2"
+let localVersion = "1.3"
 
 let widget = new ListWidget()
 widget.setPadding(10, 10, 10, 10)
@@ -81,9 +82,13 @@ async function createWidget() {
 
 
 async function logoImg() {
-  const url = "https://github.com/wuhuhuuuu/study/raw/main/Scriptable/10099/10099.png"
-  let req = new Request(url)
-  return await req.loadImage()
+  try {
+    const url = "https://github.com/wuhuhuuuu/study/raw/main/Scriptable/10099/10099.png"
+    let req = new Request(url)
+    return await req.loadImage()
+  } catch (e) {
+    console.warn("logoImg❌❌:"+e)
+  }
 }
 
 
@@ -106,48 +111,56 @@ function setStack(stack, data) {
 
 
 async function userInfo() {
-  const url = "https://wx.10099.com.cn/contact-web/api/busi/qryUserInfo"
-  const headers = (Keychain.contains("10099.headers") ? Keychain.get("10099.headers") : "")
-  const body = (Keychain.contains("10099.body") ? Keychain.get("10099.body") : "")
-  
-  let req = new Request(url)
-  req.method = "POST"
-  if (headers && body) {
-    req.headers = JSON.parse(headers)
-    req.body = JSON.parse(body)
-  } else {
-    await BoxjsData()
-  }
-  
-  const resp = await req.loadJSON()
-  if (resp.status === "000000") {
-    fee.number = resp.data.userData.fee/100
-    flow.number = (resp.data.userData.flow/1048576).toFixed(2)
-    voice.number = resp.data.userData.voice
-    const date = new Date(parseInt(resp.timestamp))
-    const time = date.toTimeString()
-    const match = time.match(/(\d{2}:\d{2})/)
-    updateTime.number = match[0]
+  try {
+    const url = "https://wx.10099.com.cn/contact-web/api/busi/qryUserInfo"
+    const headers = (Keychain.contains("10099.headers") ? Keychain.get("10099.headers") : "")
+    const body = (Keychain.contains("10099.body") ? Keychain.get("10099.body") : "")
+    
+    let req = new Request(url)
+    req.method = "POST"
+    if (headers && body) {
+      req.headers = JSON.parse(headers)
+      req.body = JSON.parse(body)
+    } else {
+      await BoxjsData()
+    }
+    
+    const resp = await req.loadJSON()
+    if (resp.status === "000000") {
+      fee.number = resp.data.userData.fee/100
+      flow.number = (resp.data.userData.flow/1048576).toFixed(2)
+      voice.number = resp.data.userData.voice
+      const date = new Date(parseInt(resp.timestamp))
+      const time = date.toTimeString()
+      const match = time.match(/(\d{2}:\d{2})/)
+      updateTime.number = match[0]
+    }
+  } catch (e) {
+    console.warn("userInfo❌❌:"+e)
   }
 }
 
 
 async function BoxjsData() {
-  const url = "http://boxjs.com/query/boxdata"
-  let req = new Request(url)
-  const resp = await req.loadJSON()
-  const data = resp.datas
-  if (data["10099"]) {
-    const json = JSON.parse(data["10099"])
-    Keychain.set("10099.body", JSON.stringify(json.body))
-    Keychain.set("10099.headers", JSON.stringify(json.headers))
-  } else {
-    const sub = JSON.stringify(resp.usercfgs.appsubs)
-    const str = "https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json"
-    const match = sub.match(str)
-    if (!match) {
-      await setNotification("Boxjs找不到10099相关信息", "点击该通知即可一键安装Boxjs订阅！！", "http://boxjs.com/#/sub/add/https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json")
+  try {
+    const url = "http://boxjs.com/query/boxdata"
+    let req = new Request(url)
+    const resp = await req.loadJSON()
+    const data = resp.datas
+    if (data["10099"]) {
+      const json = JSON.parse(data["10099"])
+      Keychain.set("10099.body", JSON.stringify(json.body))
+      Keychain.set("10099.headers", JSON.stringify(json.headers))
+    } else {
+      const sub = JSON.stringify(resp.usercfgs.appsubs)
+      const str = "https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json"
+      const match = sub.match(str)
+      if (!match) {
+        await setNotification("Boxjs找不到10099相关信息", "点击该通知即可一键安装Boxjs订阅！！", "http://boxjs.com/#/sub/add/https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json")
+      }
     }
+  } catch (e) {
+    console.warn("BoxjsData❌❌:"+e)
   }
 }
 

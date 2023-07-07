@@ -134,6 +134,8 @@ async function userInfo() {
       const time = date.toTimeString()
       const match = time.match(/(\d{2}:\d{2})/)
       updateTime.number = match[0]
+    } else {
+      console.error("cookie已过期，请重新获取！！")
     }
   } catch (e) {
     console.warn("userInfo❌❌:"+e)
@@ -151,6 +153,8 @@ async function BoxjsData() {
       const json = JSON.parse(data["10099"])
       Keychain.set("10099.body", JSON.stringify(json.body))
       Keychain.set("10099.headers", JSON.stringify(json.headers))
+    } else if (!data["10099"]) {
+      console.log("Boxjs中获取不到10099相关cookie，请重新用10099.cookie.js获取！！😎😎")
     } else {
       const sub = JSON.stringify(resp.usercfgs.appsubs)
       const str = "https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json"

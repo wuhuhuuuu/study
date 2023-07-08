@@ -87,7 +87,7 @@ async function logoImg() {
     let req = new Request(url)
     return await req.loadImage()
   } catch (e) {
-    console.warn("logoImg❌❌:"+e)
+    console.warn("logoImg❌❌:\n"+e)
   }
 }
 
@@ -138,7 +138,7 @@ async function userInfo() {
       console.error("cookie已过期，请重新获取！！")
     }
   } catch (e) {
-    console.warn("userInfo❌❌:"+e)
+    console.warn("userInfo❌❌:\n"+e)
   }
 }
 
@@ -164,7 +164,7 @@ async function BoxjsData() {
       }
     }
   } catch (e) {
-    console.warn("BoxjsData❌❌:"+e)
+    console.warn("BoxjsData❌❌:\n"+e)
   }
 }
 

@@ -3,20 +3,21 @@
 // icon-color: deep-green; icon-glyph: phone-square;
 /********************************************************
  * script     : 10099.js
- * version    : 1.3
+ * version    : 1.4
  * author     : wuhu.（50岁，来自大佬国的一点乐色
- * date       : 2023-07-07
+ * date       : 2023-07-02
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/10099
  * Changelog  :
 v1.0(7.2) - 基本完成所有布局，配合boxjs食用
 v1.1(7.3) - 文字排版调整，抄了亿点点代码😂
 v1.2(7.5) - 直接做掉cookie失效的通知，防止无效通知刷屏😂，当小组件数据都为0即获取不到信息
 v1.3(7.7) - 更改代码逻辑，捕捉错误，使得获取不到数据能显示小组件，不至于ssl错误
+v1.4(7.10) - logo缓存机制，防止后续因网络差拉取不到图片，小组件显示不了，存储文件夹为 images/10099
 ----------------------------------------------- */
 
 
 
-let localVersion = "1.3"
+let localVersion = "1.4"
 
 let widget = new ListWidget()
 widget.setPadding(10, 10, 10, 10)
@@ -57,7 +58,7 @@ updateTime = {
 async function createWidget() {
   const logoStack = widget.addStack()
   logoStack.addSpacer()
-  const logo = logoStack.addImage(await logoImg())
+  const logo = logoStack.addImage(await logoImage())
   logo.imageSize = new Size(105.6, 34.8)
   logoStack.addSpacer()
   widget.addSpacer()
@@ -81,13 +82,22 @@ async function createWidget() {
 }
 
 
-async function logoImg() {
-  try {
-    const url = "https://github.com/wuhuhuuuu/study/raw/main/Scriptable/10099/10099.png"
-    let req = new Request(url)
-    return await req.loadImage()
-  } catch (e) {
-    console.warn("logoImg❌❌:\n"+e)
+async function logoImage() {
+  const fm = FileManager.iCloud()
+  const dict = fm.documentsDirectory()
+  if (fm.fileExists(`${dict}/images/10099/10099.png`)) {
+    return Image.fromFile(`${dict}/images/10099/10099.png`)
+  } else {
+    if (!fm.fileExists(`${dict}/images/10099`)) fm.createDirectory(`${dict}/images/10099`, true)
+    try {
+      const url = "https://github.com/wuhuhuuuu/study/raw/main/Scriptable/10099/10099.png"
+      let req = new Request(url)
+      const image = await req.loadImage()
+      fm.writeImage(`${dict}/images/10099/10099.png`, image)
+      return image
+    } catch (e) {
+      console.warn("logoImage❌❌:\n"+e)
+    }
   }
 }
 

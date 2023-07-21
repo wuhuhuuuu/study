@@ -3,7 +3,7 @@
 // icon-color: deep-green; icon-glyph: phone-square;
 /********************************************************
  * script     : 10099.js
- * version    : 1.4
+ * version    : 1.5
  * author     : wuhu.（50岁，来自大佬国的一点乐色
  * date       : 2023-07-02
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/10099
@@ -13,23 +13,27 @@ v1.1(7.3) - 文字排版调整，抄了亿点点代码😂
 v1.2(7.5) - 直接做掉cookie失效的通知，防止无效通知刷屏😂，当小组件数据都为0即获取不到信息
 v1.3(7.7) - 更改代码逻辑，捕捉错误，使得获取不到数据能显示小组件，不至于ssl错误
 v1.4(7.10) - logo缓存机制，防止后续因网络差拉取不到图片，小组件显示不了，存储文件夹为 images/10099
+v1.5(7.21) - 新增了锁屏界面AccessoryRec小组件
 ----------------------------------------------- */
 
 
 
-let localVersion = "1.4"
+let localVersion = "1.5"
 
 let widget = new ListWidget()
 widget.setPadding(10, 10, 10, 10)
 widget.backgroundColor = Color.dynamic(Color.white(), Color.black())
 
 
-fee = {
+let fee = {
   title: '剩余话费',
-  number: 0
+  number: 0,
+  unit: '元',
+  icon: 'yensign',
+  iconColor: new Color('000000')
 }
 
-flow = {
+let flow = {
   title: '剩余流量',
   number: 0,
   unit: 'GB',
@@ -37,7 +41,7 @@ flow = {
   iconColor: new Color('1ab6f8')
 }
 
-voice = {
+let voice = {
   title: '剩余语音',
   number: 0,
   unit: '分钟',
@@ -46,7 +50,7 @@ voice = {
   iconColor: new Color('30d15b')
 }
 
-updateTime = {
+let updateTime = {
   title: '更新时间',
   number: 0,
   icon: 'arrow.triangle.2.circlepath',
@@ -55,7 +59,18 @@ updateTime = {
 }
 
 
-async function createWidget() {
+async function createAccessoryRec() {
+  const bodyStack = widget.addStack()
+  bodyStack.layoutVertically()
+  
+  setStack(bodyStack, fee)
+  bodyStack.addSpacer()
+  setStack(bodyStack, flow)
+  bodyStack.addSpacer()
+  setStack(bodyStack, voice)
+}
+
+async function createSmall() {
   const logoStack = widget.addStack()
   logoStack.addSpacer()
   const logo = logoStack.addImage(await logoImage())
@@ -190,21 +205,28 @@ async function setNotification(title, subtitle, openURL) {
 
 
 async function previewandset() {
-    let options = ["预览小组件", "添加Boxjs订阅", "更新脚本"]
+    let options = ["预览Small组件", "预览AccessoryRec小组件", "添加Boxjs订阅", "更新脚本"]
     
     let idx = await generateAlert("10099 Widget", "Designed by wuhu.", options)
     switch(idx) {
         case 0:
           await userInfo()
-          await createWidget()
+          await createSmall()
           Script.setWidget(widget)
           Script.complete()
           widget.presentSmall()
           break
         case 1:
-          Safari.openInApp("http://boxjs.com/#/sub/add/https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json", false)
+          await userInfo()
+          await createAccessoryRec()
+          Script.setWidget(widget)
+          Script.complete()
+          widget.presentAccessoryRectangular()
           break
         case 2:
+          Safari.openInApp("http://boxjs.com/#/sub/add/https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json", false)
+          break
+        case 3:
           await update()
           break
     }
@@ -263,8 +285,17 @@ if (config.runsInApp) {
   await previewandset()
 } else {
   await userInfo()
-  await createWidget()
-  Script.setWidget(widget)
-  Script.complete()
-  widget.presentSmall()
+  switch (config.widgetFamily) {
+    case "small":
+      await createSmall()
+      Script.setWidget(widget)
+      Script.complete()
+      widget.presentSmall()
+      break
+    case "accessoryRectangular":
+      await createAccessoryRec()
+      Script.setWidget(widget)
+      Script.complete()
+      widget.presentAccessoryRectangular()
+  }
 }

@@ -3,7 +3,7 @@
 // icon-color: deep-green; icon-glyph: phone-square;
 /********************************************************
  * script     : 10099.js
- * version    : 1.5
+ * version    : 1.6
  * author     : wuhu.（50岁，来自大佬国的一点乐色
  * date       : 2023-07-02
  * github     : https://github.com/wuhuhuuuu/study/tree/main/Scriptable/10099
@@ -14,11 +14,12 @@ v1.2(7.5) - 直接做掉cookie失效的通知，防止无效通知刷屏😂，�
 v1.3(7.7) - 更改代码逻辑，捕捉错误，使得获取不到数据能显示小组件，不至于ssl错误
 v1.4(7.10) - logo缓存机制，防止后续因网络差拉取不到图片，小组件显示不了，存储文件夹为 images/10099
 v1.5(7.21) - 新增了锁屏界面AccessoryRec小组件，需iOS16及以上
+v1.6(7.23) - 由于目前查询所需数据不仅仅是cookie如此简单，故直接用Boxjs配合10099.cookie.js是最简单的方式，该版本去掉请求数据缓存，直接时刻调用Boxjs数据
 ----------------------------------------------- */
 
 
 
-let localVersion = "1.5"
+let localVersion = "1.6"
 
 let widget = new ListWidget()
 widget.setPadding(10, 10, 10, 10)
@@ -137,19 +138,12 @@ function setStack(stack, data) {
 
 async function userInfo() {
   try {
-    const url = "https://wx.10099.com.cn/contact-web/api/busi/qryUserInfo"
-    const headers = (Keychain.contains("10099.headers") ? Keychain.get("10099.headers") : "")
-    const body = (Keychain.contains("10099.body") ? Keychain.get("10099.body") : "")
+    let reqInfo = await BoxjsData()
     
-    let req = new Request(url)
+    let req = new Request(reqInfo.url)
     req.method = "POST"
-    if (headers && body) {
-      req.headers = JSON.parse(headers)
-      req.body = JSON.parse(body)
-    } else {
-      await BoxjsData()
-    }
-    
+    req.headers = reqInfo.headers
+    req.body = reqInfo.body
     const resp = await req.loadJSON()
     if (resp.status === "000000") {
       fee.number = resp.data.userData.fee/100
@@ -174,22 +168,21 @@ async function BoxjsData() {
     let req = new Request(url)
     const resp = await req.loadJSON()
     const data = resp.datas
-    if (data["10099"]) {
-      const json = JSON.parse(data["10099"])
-      Keychain.set("10099.body", JSON.stringify(json.body))
-      Keychain.set("10099.headers", JSON.stringify(json.headers))
-    } else if (!data["10099"]) {
-      console.log("Boxjs中获取不到10099相关cookie，请重新用10099.cookie.js获取！！😎😎")
+    const sub = JSON.stringify(resp.usercfgs.appsubs)
+    const str = "https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json"
+    const match = sub.match(str)
+    if (!match) {
+      await setNotification("Boxjs找不到10099相关信息", "点击该通知即可一键安装Boxjs订阅！！", "http://boxjs.com/#/sub/add/https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json")
     } else {
-      const sub = JSON.stringify(resp.usercfgs.appsubs)
-      const str = "https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json"
-      const match = sub.match(str)
-      if (!match) {
-        await setNotification("Boxjs找不到10099相关信息", "点击该通知即可一键安装Boxjs订阅！！", "http://boxjs.com/#/sub/add/https://github.com/wuhuhuuuu/study/raw/main/Scripts/wuhuhuuuu.boxjs.json")
+      if (data["10099"]) {
+        const json = JSON.parse(data["10099"])
+        return json
+      } else {
+        console.log("Boxjs中获取不到10099相关cookie，请重新用10099.cookie.js获取！！😎😎")
       }
     }
   } catch (e) {
-    console.warn("BoxjsData❌❌:\n"+e)
+    console.error("BoxjsData❌❌:\n"+e)
   }
 }
 

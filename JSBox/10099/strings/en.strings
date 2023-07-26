@@ -8,3 +8,4 @@
 "IF_NEW" = "A new version has been detected, do you want to update?";
 "OK" = "OK";
 "CANCEL" = "Cancel";
+"LAST_VERSION" = "Already the latest version, no update required!!";

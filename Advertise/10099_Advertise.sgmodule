@@ -1,0 +1,13 @@
+#!name=10099_Advertise
+#!desc=Ban advertise!!
+#!author=wuhuhuuuu
+#!homepage=https://github.com/wuhuhuuuu
+#!icon=https://github.com/wuhuhuuuu/study/raw
+/main/Scripts/10099/10099.png
+
+
+[Script]
+10099_Advertise = type=http-response,pattern=https://app.10099.com.cn/contact-web/api/content/qryPosterStand,requires-body=1,max-size=0,script-path=10099_Advertise.js
+
+[MITM]
+hostname= %APPEND% app.10099.com.cn

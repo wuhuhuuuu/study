@@ -26,10 +26,8 @@ Panel 配置
 hostname = wx.10099.com.cn
 
 [Script]
-http-request https://wx.10099.com.cn/contact-web/api/busi/qryUserInfo script-path=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.cookie.js, requires-body=true, timeout=10, tag=10099.cookie, img-url=https://github.com/wuhuhuuuu/study/raw
-/main/Scripts/10099/10099.png
-cron "3 0 * * *" script-path=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.js, timeout=10, tag=腾讯动漫, img-url=https://github.com/wuhuhuuuu/study/raw
-/main/Scripts/10099/10099.png
+http-request https://wx.10099.com.cn/contact-web/api/busi/qryUserInfo script-path=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.cookie.js, requires-body=true, timeout=10, tag=10099.cookie, img-url=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png
+cron "3 0 * * *" script-path=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.js, timeout=10, tag=腾讯动漫, img-url=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png
 ```
 ## 配置 (QuanX)
 
@@ -41,8 +39,7 @@ hostname = wx.10099.com.cn
 https://wx.10099.com.cn/contact-web/api/busi/qryUserInfo url script-request-body https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.cookie.js
 
 [task_local]
-3 0 * * * https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.js, tag=10099, img-url=https://github.com/wuhuhuuuu/study/raw
-/main/Scripts/10099/10099.png
+3 0 * * * https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.js, tag=10099, img-url=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png
 ```
 
 ## 说明

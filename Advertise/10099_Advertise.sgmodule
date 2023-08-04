@@ -5,6 +5,9 @@
 #!icon=https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png
 
 
+[URL Rewrite]
+https://app.10099.com.cn/contact-web/api/version/getFlashScreenPage - reject
+
 [Script]
 10099_Advertise = type=http-response,pattern=https://app.10099.com.cn/contact-web/api/content/qryPosterStand,requires-body=1,max-size=0,script-path=10099_Advertise.js
 

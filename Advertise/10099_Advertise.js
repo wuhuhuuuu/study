@@ -5,7 +5,10 @@ const postersToExclude = [
     "首页-底部广告位",
     "分类-轮播图",
     "我的-非广电轮播图",
-    "我的-轮播图"
+    "我的-轮播图",
+    "新首页-顶部轮播图",
+    "新首页-甄选推荐",
+    "新首页-底部轮播图" 
 ];
 const result = resp.data.filter(item => !postersToExclude.includes(item.posterStandName));
 resp.data = result;

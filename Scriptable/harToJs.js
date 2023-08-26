@@ -29,14 +29,13 @@ function writeJs() {
 }
 
 function icloudOrNot() {
+  let fm = FileManager
+  let result = 1
   try {
-    var fm = FileManager.iCloud()
-    var dict = fm.documentsDirectory()
+    let fm_icloud = fm.iCloud().documentsDirectory()
   } catch (e) {
-    fm = e ? FileManager.local() : FileManager.iCloud()
+    result = e ? 0 : 1
   }
-  dict = fm.documentsDirectory()
-  const result = dict.includes("iCloud~dk~simonbs~Scriptable")
   return result
 }
 

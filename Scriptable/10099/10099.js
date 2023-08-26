@@ -16,9 +16,10 @@ v1.4(7.10) - logo缓存机制，防止后续因网络差拉取不到图片，小
 v1.5(7.21) - 新增了锁屏界面AccessoryRec小组件，需iOS16及以上
 v1.6(7.23) - 由于目前查询所需数据不仅仅是cookie如此简单，故直接用Boxjs配合10099.cookie.js是最简单的方式，该版本去掉请求数据缓存，直接时刻调用Boxjs数据
 v1.7(7.24) - 弃Alert，换UITable，无他，逼格高矣
+v1.8(8.27) - filemanager判断更全面，不再局限于icloud
 ----------------------------------------------- */
 
-let localVersion = "1.7";
+let localVersion = "1.8";
 let fee = {
   "title": "剩余话费",
   "number": 0,
@@ -60,9 +61,9 @@ async function createAccessoryRec() {
   bodyStack.layoutVertically();
 
   setStack(bodyStack, fee);
-  bodyStack.addSpacer();
+  bodyStack.addSpacer(5);
   setStack(bodyStack, flow);
-  bodyStack.addSpacer();
+  bodyStack.addSpacer(5);
   setStack(bodyStack, voice);
   await widget.presentAccessoryRectangular();
 }
@@ -105,7 +106,7 @@ widget.backgroundColor = Color.dynamic(Color.white(), Color.black());
 
 async function logoImage(url) {
   const name = url.split("/").pop();
-  const fm = FileManager.iCloud();
+  const fm = icloudOrNot() ? FileManager.iCloud() : FileManager.local();
   const dict = fm.documentsDirectory();
   if (fm.fileExists(`${dict}/images/10099/${name}`)) {
     return Image.fromFile(`${dict}/images/10099/${name}`);
@@ -286,7 +287,7 @@ async function previewUITable() {
 }
 
 async function update() {
-  const fm = FileManager.iCloud();
+  const fm = icloudOrNot() ? FileManager.iCloud() : FileManager.local();
   const dict = fm.documentsDirectory();
   const scriptName = Script.name();
 
@@ -319,6 +320,17 @@ async function update() {
     notification.sound = "default";
     await notification.schedule();
   }
+}
+
+function icloudOrNot() {
+  let fm = FileManager
+  let result = 1
+  try {
+    let fm_icloud = fm.iCloud().documentsDirectory()
+  } catch (e) {
+    result = e ? 0 : 1
+  }
+  return result
 }
 
 if (config.runsInApp) {

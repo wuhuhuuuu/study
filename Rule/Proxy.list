@@ -22,3 +22,10 @@ DOMAIN-SUFFIX,notion.site
 # -> Microsoft
 DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,outlook
+
+# -> Twitter
+DOMAIN-SUFFIX,twitter.com
+DOMAIN-SUFFIX,twimg.com
+
+# -> Spotify
+DOMAIN-SUFFIX,spotify.com

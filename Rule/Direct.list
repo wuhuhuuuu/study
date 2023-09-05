@@ -11,3 +11,6 @@ USER-AGENT,MicroMessenger Client
 
 # -> 百度
 DOMAIN-SUFFIX,baidu.com
+
+# -> QQ
+DOMAIN-SUFFIX,qq.com

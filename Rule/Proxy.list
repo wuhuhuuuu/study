@@ -1,0 +1,24 @@
+# NAME：Proxy
+# Author： wuhuhuuuu
+
+
+# -> Github
+DOMAIN-KEYWORD,github
+
+# -> Google
+DOMAIN-KEYWORD,google
+DOMAIN-KEYWORD,youtube
+
+# -> Bark
+DOMAIN,api.day.app
+
+# -> T-Mobile
+DOMAIN-SUFFIX,t-mobile.com
+DOMAIN-KEYWORD,tmobile
+
+# -> Notion
+DOMAIN-SUFFIX,notion.site
+
+# -> Microsoft
+DOMAIN-KEYWORD,microsoft
+DOMAIN-KEYWORD,outlook

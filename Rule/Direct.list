@@ -5,6 +5,7 @@
 # -> 哔哩哔哩
 DOMAIN-SUFFIX,bilibili.com
 DOMAIN-SUFFIX,bilivideo.com
+DOMAIN-KEYWORD,biliapi
 
 # -> 微信
 USER-AGENT,MicroMessenger Client

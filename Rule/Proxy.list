@@ -13,7 +13,7 @@ DOMAIN-KEYWORD,youtube
 DOMAIN,api.day.app
 
 # -> T-Mobile
-DOMAIN-SUFFIX,t-mobile.com
+DOMAIN-KEYWORD,t-mobile
 DOMAIN-KEYWORD,tmobile
 
 # -> Notion
@@ -22,6 +22,8 @@ DOMAIN-SUFFIX,notion.site
 # -> Microsoft
 DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,outlook
+DOMAIN-SUFFIX,messenger.live.com
+DOMAIN-SUFFIX,skype.com
 
 # -> Twitter
 DOMAIN-SUFFIX,twitter.com

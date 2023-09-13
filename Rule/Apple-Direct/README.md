@@ -1,9 +1,11 @@
 # Apple Direct
 
-## Apple ID
+## Apple ID && Update
  * appleid.cdn-apple.com:443
  * idmsa.apple.com:443
  * gsa.apple.com:443
+ * updates.cdn-apple.com:443
+
 
 
 ## App Store && Testflight

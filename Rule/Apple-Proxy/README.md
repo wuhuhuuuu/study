@@ -1,8 +1,17 @@
 # Apple Proxy
 
+## Apple ID && Update
+ * appleid.cdn-apple.com:443
+ * idmsa.apple.com:443
+ * gsa.apple.com:443
+ * updates.cdn-apple.com:443
+
+
+ 
 ## App Store && Testflight
  * iosapps.itunes.apple.com:443 // 软件下载速度
  * testflight.apple.com:443
+
 
 
 ## Apple Music

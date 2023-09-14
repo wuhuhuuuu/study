@@ -31,3 +31,6 @@ DOMAIN-SUFFIX,twimg.com
 
 # -> Spotify
 DOMAIN-SUFFIX,spotify.com
+
+# -> Duolingo
+DOMAIN-SUFFIX,duolingo.com

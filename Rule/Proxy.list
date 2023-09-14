@@ -34,3 +34,4 @@ DOMAIN-SUFFIX,spotify.com
 
 # -> Duolingo
 DOMAIN-SUFFIX,duolingo.com
+DOMAIN-SUFFIX,cloudfront.net

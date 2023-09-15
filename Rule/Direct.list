@@ -15,3 +15,10 @@ DOMAIN-SUFFIX,baidu.com
 
 # -> QQ
 DOMAIN-SUFFIX,qq.com
+
+# -> 抖音
+DOMAIN-KEYWORD,douyin
+DOMAIN-SUFFIX,zijieapi.com
+
+# -> 12306
+DOMAIN-SUFFIX,12306.cn

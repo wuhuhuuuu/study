@@ -6,15 +6,17 @@
 DOMAIN-SUFFIX,bilibili.com
 DOMAIN-KEYWORD,bilivideo
 DOMAIN-KEYWORD,biliapi
+DOMAIN-SUFFIX,hdslb.com
 
-# -> 微信
+# -> 腾讯
+# -------> 微信
 USER-AGENT,MicroMessenger Client
+# -------> QQ
+DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,tencent.com
 
 # -> 百度
 DOMAIN-SUFFIX,baidu.com
-
-# -> QQ
-DOMAIN-SUFFIX,qq.com
 
 # -> 抖音
 DOMAIN-KEYWORD,douyin
@@ -22,3 +24,11 @@ DOMAIN-SUFFIX,zijieapi.com
 
 # -> 12306
 DOMAIN-SUFFIX,12306.cn
+
+# -> 阿里
+# ------->云盘
+DOMAIN-KEYWORD,aliyundrive
+# ------->淘宝
+DOMAIN-KEYWORD,taobao
+# ------->支付宝
+DOMAIN-KEYWORD,alipay

@@ -11,6 +11,7 @@ DOMAIN-SUFFIX,hdslb.com
 # -> 腾讯
 # -------> 微信
 USER-AGENT,MicroMessenger Client
+DOMAIN-KEYWORD,wechat
 # -------> QQ
 DOMAIN-SUFFIX,qq.com
 DOMAIN-SUFFIX,tencent.com

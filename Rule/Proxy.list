@@ -22,8 +22,11 @@ DOMAIN-SUFFIX,notion.site
 # -> Microsoft
 DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,outlook
-DOMAIN-SUFFIX,messenger.live.com
-DOMAIN-SUFFIX,skype.com
+DOMAIN-KEYWORD,skype
+DOMAIN-SUFFIX,live.com
+DOMAIN-SUFFIX,msftauth.net
+DOMAIN-SUFFIX,msauth.net
+DOMAIN-SUFFIX,office.com
 
 # -> Twitter
 DOMAIN-SUFFIX,twitter.com

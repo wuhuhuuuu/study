@@ -2,9 +2,8 @@
 # Author： wuhuhuuuu
 
 
-DOMAIN-SUFFIX,apple.com
+DOMAIN-KEYWORD,apple
+DOMAIN-KEYWORD,icloud
 DOMAIN-SUFFIX,autonavi.com
 DOMAIN-SUFFIX,mzstatic.com
-DOMAIN-KEYWORD,icloud
 DOMAIN-SUFFIX,mail.me.com
-DOMAIN-KEYWORD,cdn-apple

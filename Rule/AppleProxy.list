@@ -1,0 +1,16 @@
+# NAME：Apple Proxy
+# Author： wuhuhuuuu
+
+
+# -> App Download Speed
+DOMAIN,iosapps.itunes.apple.com
+# -> TestFlight
+DOMAIN,testflight.apple.com
+# -> iCloud
+DOMAIN-KEYWORD,icloud
+# -> Email
+DOMAIN-SUFFIX,mail.me.com
+# -> identify
+DOMAIN-KEYWORD,cdn-apple
+# -> iMessage
+DOMAIN-SUFFIX,ess.apple.com

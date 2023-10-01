@@ -2,12 +2,21 @@
 # Author： wuhuhuuuu
 
 
-# -> Github
-DOMAIN-KEYWORD,github
+# -> Microsoft
+DOMAIN-KEYWORD,microsoft
+DOMAIN-KEYWORD,outlook
+DOMAIN-KEYWORD,skype
+DOMAIN-SUFFIX,live.com
+DOMAIN-SUFFIX,msftauth.net
+DOMAIN-SUFFIX,msauth.net
+DOMAIN-SUFFIX,office.com
 
 # -> Google
 DOMAIN-KEYWORD,google
 DOMAIN-KEYWORD,youtube
+
+# -> Github
+DOMAIN-KEYWORD,github
 
 # -> Bark
 DOMAIN,api.day.app
@@ -18,15 +27,6 @@ DOMAIN-KEYWORD,tmobile
 
 # -> Notion
 DOMAIN-SUFFIX,notion.site
-
-# -> Microsoft
-DOMAIN-KEYWORD,microsoft
-DOMAIN-KEYWORD,outlook
-DOMAIN-KEYWORD,skype
-DOMAIN-SUFFIX,live.com
-DOMAIN-SUFFIX,msftauth.net
-DOMAIN-SUFFIX,msauth.net
-DOMAIN-SUFFIX,office.com
 
 # -> Twitter
 DOMAIN-SUFFIX,twitter.com

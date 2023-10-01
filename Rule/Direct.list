@@ -2,12 +2,6 @@
 # Author： wuhuhuuuu
 
 
-# -> 哔哩哔哩
-DOMAIN-SUFFIX,bilibili.com
-DOMAIN-KEYWORD,bilivideo
-DOMAIN-KEYWORD,biliapi
-DOMAIN-SUFFIX,hdslb.com
-
 # -> 腾讯
 # -------> 微信
 USER-AGENT,MicroMessenger Client
@@ -15,6 +9,18 @@ DOMAIN-KEYWORD,wechat
 # -------> QQ
 DOMAIN-SUFFIX,qq.com
 DOMAIN-SUFFIX,tencent.com
+
+# -> 阿里
+# ------->云盘
+DOMAIN-KEYWORD,aliyundrive
+# ------->淘宝
+DOMAIN-KEYWORD,taobao
+# ------->支付宝
+DOMAIN-KEYWORD,alipay
+
+# -> 京东
+DOMAIN-SUFFIX,jd.com
+DOMAIN-SUFFIX,360buyimg.com
 
 # -> 百度
 DOMAIN-SUFFIX,baidu.com
@@ -26,10 +32,12 @@ DOMAIN-SUFFIX,zijieapi.com
 # -> 12306
 DOMAIN-SUFFIX,12306.cn
 
-# -> 阿里
-# ------->云盘
-DOMAIN-KEYWORD,aliyundrive
-# ------->淘宝
-DOMAIN-KEYWORD,taobao
-# ------->支付宝
-DOMAIN-KEYWORD,alipay
+# -> 哔哩哔哩
+DOMAIN-KEYWORD,bilivideo
+DOMAIN-KEYWORD,biliapi
+DOMAIN-SUFFIX,bilibili.com
+DOMAIN-SUFFIX,hdslb.com
+
+# -> ChinaUnicom
+DOMAIN-SUFFIX,chinaunicom.cn
+DOMAIN-SUFFIX,10010.com

@@ -15,12 +15,15 @@ DOMAIN-SUFFIX,tencent.com
 DOMAIN-KEYWORD,aliyundrive
 # ------->淘宝
 DOMAIN-KEYWORD,taobao
+DOMAIN-KEYWORD,alicdn
+DOMAIN-KEYWORD,aliapp
 # ------->支付宝
 DOMAIN-KEYWORD,alipay
 
 # -> 京东
 DOMAIN-SUFFIX,jd.com
 DOMAIN-SUFFIX,360buyimg.com
+DOMAIN-SUFFIX,300hu.com
 
 # -> 百度
 DOMAIN-SUFFIX,baidu.com
@@ -41,3 +44,7 @@ DOMAIN-SUFFIX,hdslb.com
 # -> ChinaUnicom
 DOMAIN-SUFFIX,chinaunicom.cn
 DOMAIN-SUFFIX,10010.com
+
+# -> ASN
+IP-ASN,4134 // Chinanet
+IP-ASN,37963 // Hangzhou Alibaba Advertising Co.,Ltd.

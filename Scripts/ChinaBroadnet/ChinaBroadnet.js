@@ -1,5 +1,7 @@
-const $ = new Env('10099')
-$.KEY_sign = '10099'
+const $ = new Env('wuhuhu.ChinaBroadnet')
+$.KEY_url = '@wuhuhu.ChinaBroadnet.url'
+$.KEY_access = '@wuhuhu.ChinaBroadnet.access'
+$.KEY_body = '@wuhuhu.ChinaBroadnet.body'
 
 !(async () => {
   await login()
@@ -10,7 +12,19 @@ $.KEY_sign = '10099'
 
 function login() {
   return new Promise((resolve) => {
-    const opts = JSON.parse($.getdata($.KEY_sign))
+    const url = $.getdata($.KEY_url)
+    const access = $.getdata($.KEY_access)
+    const body = $.getdata($.KEY_body)
+    const opts = {}
+    const data = {
+      "data": body
+    }
+    opts.url = url
+    opts.headers = {
+        'access': access,
+        'content-type': 'application/json'
+        }
+    opts.body = JSON.stringify(data)
     $.post(opts, (err, resp, data) => {
       try {
         $.Info = JSON.parse(data)
@@ -27,13 +41,12 @@ function showmsg() {
 		console.log($.Info['data'])
     $.subt = '查询'
     if ($.Info.status === '000000') {
-      const fee = $.Info.data.userData.fee/100
-      const flow = ($.Info.data.userData.flow/1048576).toFixed(2)
-			const voice = $.Info.data.userData.voice
-			$done({title: "10099",
-				content: `📲  剩余话费：${fee} 元\n\n` + `🌐  剩余流量：${flow} GB\n\n`+ `📞  剩余语音：${voice} 分钟`})
-    } else $done({title: "10099",
-			content: "Cookie已过期，请重新获取！！"})
+      fee = $.Info.data.userData.fee/100
+      flow = ($.Info.data.userData.flow/1048576).toFixed(2)
+      $.subt += '成功'
+      $.desc = `🎉   剩余话费：${fee}元\n` + `🎉   剩余流量：${flow}GB`
+    } else $.subt += '失败'
+    $.msg($.name, $.subt, $.desc)
     resolve()
   })
 }

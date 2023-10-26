@@ -18,15 +18,15 @@
       ]
     },
     {
-      "id": "10099",
+      "id": "wuhuhu.ChinaBroadnet",
       "name": "中国广电",
-      "keys": ["10099"],
+      "keys": ["@wuhuhu.ChinaBroadnet.url", "@wuhuhu.ChinaBroadnet.access", "@wuhuhu.ChinaBroadnet.body"],
       "author": "@wuhuhuuuu",
-      "script": "https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.js",
-      "repo": "https://github.com/wuhuhuuuu/study/tree/main/Scripts/10099",
+      "script": "https://github.com/wuhuhuuuu/study/raw/main/Scripts/ChinaBroadnet/ChinaBroadnet.js",
+      "repo": "https://github.com/wuhuhuuuu/study/tree/main/Scripts/ChinaBroadnet",
       "icons": [
-        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png",
-        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/10099/10099.png"
+        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/ChinaBroadnet/ChinaBroadnet.png",
+        "https://github.com/wuhuhuuuu/study/raw/main/Scripts/ChinaBroadnet/ChinaBroadnet.png"
       ]
     }
   ]

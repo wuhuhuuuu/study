@@ -6,3 +6,4 @@ DOMAIN-KEYWORD,openai
 DOMAIN-KEYWORD,intercom
 DOMAIN-SUFFIX,ingest.sentry.io
 DOMAIN-SUFFIX,statsig.com
+DOMAIN,browser-intake-datadoghq.com

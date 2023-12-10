@@ -11,17 +11,11 @@ DOMAIN-SUFFIX,qq.com
 DOMAIN-SUFFIX,tencent.com
 
 # -> 阿里
-# ------->云盘
-DOMAIN-KEYWORD,aliyundrive
-# ------->淘宝
+DOMAIN-KEYWORD,ali
 DOMAIN-KEYWORD,taobao
-DOMAIN-KEYWORD,alicdn
-DOMAIN-KEYWORD,aliapp
-# ------->支付宝
-DOMAIN-KEYWORD,alipay
 
 # -> 京东
-DOMAIN-SUFFIX,jd.com
+DOMAIN-KEYWORD,jd
 DOMAIN-SUFFIX,360buyimg.com
 DOMAIN-SUFFIX,300hu.com
 
@@ -31,6 +25,9 @@ DOMAIN-SUFFIX,baidu.com
 # -> 抖音
 DOMAIN-KEYWORD,douyin
 DOMAIN-SUFFIX,zijieapi.com
+DOMAIN-SUFFIX,amemv.com
+DOMAIN-SUFFIX,bytegecko.com
+DOMAIN-SUFFIX,volcsirius.com
 
 # -> 12306
 DOMAIN-SUFFIX,12306.cn
@@ -38,13 +35,9 @@ DOMAIN-SUFFIX,12306.cn
 # -> 哔哩哔哩
 DOMAIN-KEYWORD,bilivideo
 DOMAIN-KEYWORD,biliapi
-DOMAIN-SUFFIX,bilibili.com
+DOMAIN-KEYWORD,bilibili
 DOMAIN-SUFFIX,hdslb.com
 
 # -> ChinaUnicom
 DOMAIN-SUFFIX,chinaunicom.cn
 DOMAIN-SUFFIX,10010.com
-
-# -> ASN
-IP-ASN,4134 // Chinanet
-IP-ASN,37963 // Hangzhou Alibaba Advertising Co.,Ltd.

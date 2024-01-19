@@ -7,7 +7,7 @@ DOMAIN,iosapps.itunes.apple.com
 # -> TestFlight
 DOMAIN,testflight.apple.com
 # -> iCloud
-DOMAIN-KEYWORD,icloud
+DOMAIN-SUFFIX,icloud.com
 # -> Email
 DOMAIN-SUFFIX,mail.me.com
 # -> identify

@@ -3,7 +3,8 @@
 
 
 DOMAIN-KEYWORD,apple
-DOMAIN-KEYWORD,icloud
+DOMAIN-KEYWORD,digicert
+DOMAIN-SUFFIX,icloud.com
 DOMAIN-SUFFIX,autonavi.com
 DOMAIN-SUFFIX,mzstatic.com
 DOMAIN-SUFFIX,mail.me.com

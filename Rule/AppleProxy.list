@@ -10,7 +10,7 @@ DOMAIN,testflight.apple.com
 DOMAIN-SUFFIX,icloud.com
 # -> Email
 DOMAIN-SUFFIX,mail.me.com
-# -> identify
-DOMAIN-KEYWORD,cdn-apple
 # -> iMessage
 DOMAIN-SUFFIX,ess.apple.com
+# -> identify
+DOMAIN-KEYWORD,cdn-apple

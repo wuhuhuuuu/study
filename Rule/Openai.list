@@ -2,10 +2,8 @@
 # Author： wuhuhuuuu
 
 
-DOMAIN-KEYWORD,openai
-DOMAIN-KEYWORD,chatgpt
-DOMAIN-KEYWORD,intercom
-DOMAIN-KEYWORD,statsig
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,ingest.sentry.io
 DOMAIN-SUFFIX,browser-intake-datadoghq.com

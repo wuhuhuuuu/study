@@ -3,7 +3,7 @@
 
 
 # -> Microsoft
-DOMAIN-KEYWORD,microsoft
+DOMAIN-SUFFIX,microsoft.com
 DOMAIN-KEYWORD,outlook
 DOMAIN-KEYWORD,skype
 DOMAIN-SUFFIX,live.com
@@ -16,7 +16,8 @@ DOMAIN-KEYWORD,google
 DOMAIN-KEYWORD,youtube
 
 # -> Github
-DOMAIN-KEYWORD,github
+DOMAIN-SUFFIX,github.com
+DOMAIN-SUFFIX,githubusercontent.com
 
 # -> Bark
 DOMAIN,api.day.app

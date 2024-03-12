@@ -2,8 +2,8 @@
 # Author： wuhuhuuuu
 
 
-DOMAIN-KEYWORD,apple
-DOMAIN-KEYWORD,digicert
+DOMAIN-SUFFIX,apple.com
+DOMAIN-SUFFIX,digicert.com
 DOMAIN-SUFFIX,icloud.com
 DOMAIN-SUFFIX,autonavi.com
 DOMAIN-SUFFIX,mzstatic.com

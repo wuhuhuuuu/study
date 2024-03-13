@@ -4,26 +4,28 @@
 
 # -> 腾讯
 # -------> 微信
+DOMAIN-SUFFIX,wechat.com
 USER-AGENT,MicroMessenger Client
-DOMAIN-KEYWORD,wechat
+
 # -------> QQ
 DOMAIN-SUFFIX,qq.com
 DOMAIN-SUFFIX,tencent.com
 
 # -> 阿里
-DOMAIN-KEYWORD,ali
-DOMAIN-KEYWORD,taobao
+DOMAIN-SUFFIX,alipay.com
+DOMAIN-SUFFIX,alipayobjects.com
 
 # -> 京东
-DOMAIN-KEYWORD,jd
 DOMAIN-SUFFIX,360buyimg.com
 DOMAIN-SUFFIX,300hu.com
+DOMAIN-KEYWORD,jd
 
 # -> 百度
 DOMAIN-SUFFIX,baidu.com
 
 # -> 抖音
-DOMAIN-KEYWORD,douyin
+DOMAIN-SUFFIX,douyinvod.com
+DOMAIN-SUFFIX,douyinpic.com
 DOMAIN-SUFFIX,zijieapi.com
 DOMAIN-SUFFIX,amemv.com
 DOMAIN-SUFFIX,bytegecko.com
@@ -33,9 +35,9 @@ DOMAIN-SUFFIX,volcsirius.com
 DOMAIN-SUFFIX,12306.cn
 
 # -> 哔哩哔哩
-DOMAIN-KEYWORD,bilivideo
-DOMAIN-KEYWORD,biliapi
-DOMAIN-KEYWORD,bilibili
+DOMAIN-SUFFIX,bilivideo.com
+DOMAIN-SUFFIX,biliapi.net
+DOMAIN-SUFFIX,bilibili.com
 DOMAIN-SUFFIX,hdslb.com
 
 # -> ChinaUnicom

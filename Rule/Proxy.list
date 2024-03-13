@@ -4,16 +4,16 @@
 
 # -> Microsoft
 DOMAIN-SUFFIX,microsoft.com
-DOMAIN-KEYWORD,outlook
-DOMAIN-KEYWORD,skype
 DOMAIN-SUFFIX,live.com
 DOMAIN-SUFFIX,msftauth.net
 DOMAIN-SUFFIX,msauth.net
 DOMAIN-SUFFIX,office.com
+DOMAIN-KEYWORD,outlook
+DOMAIN-KEYWORD,skype
 
 # -> Google
-DOMAIN-KEYWORD,google
-DOMAIN-KEYWORD,youtube
+DOMAIN-SUFFIX,googleapis.com
+DOMAIN-SUFFIX,youtube.com
 
 # -> Github
 DOMAIN-SUFFIX,github.com

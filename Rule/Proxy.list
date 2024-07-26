@@ -4,12 +4,13 @@
 
 # -> Microsoft
 DOMAIN-SUFFIX,microsoft.com
+DOMAIN-SUFFIX,microsoftonline.com
 DOMAIN-SUFFIX,live.com
 DOMAIN-SUFFIX,msftauth.net
 DOMAIN-SUFFIX,msauth.net
 DOMAIN-SUFFIX,office.com
-DOMAIN-KEYWORD,outlook
-DOMAIN-KEYWORD,skype
+DOMAIN-SUFFIX,office365.com
+DOMAIN-SUFFIX,skype.com
 
 # -> Google
 DOMAIN-SUFFIX,googleapis.com

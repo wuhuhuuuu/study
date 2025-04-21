@@ -1,0 +1,8 @@
+#!name=ChinaBroadnet
+#!desc=Cookie
+
+[MITM]
+hostname = %APPEND% wx.10099.com.cn
+
+[Script]
+ChinaBroadnet.cookie = type=http-request,pattern=https://wx.10099.com.cn/contact-web/api/busi/qryUserInfo,requires-body=1,max-size=0,script-path=https://github.com/wuhuhuuuu/study/raw/main/Scripts/ChinaBroadnet/ChinaBroadnet.cookie.js,script-update-interval=0

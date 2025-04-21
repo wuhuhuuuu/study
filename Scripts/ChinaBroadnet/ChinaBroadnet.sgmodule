@@ -1,5 +1,6 @@
 #!name=ChinaBroadnet
 #!desc=Cookie
+#!category=Cookie
 
 [MITM]
 hostname = %APPEND% wx.10099.com.cn
